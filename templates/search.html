@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Search Products{% endblock %}
+
+{% block content %}
+<h1>Search Products</h1>
+<form id="searchForm" method="POST">
+    <input type="text" name="query" placeholder="Enter product name..." value="{{ query }}" required>
+    <button type="submit">Search</button>
+</form>
+<div id="searchResults">
+    {% if query %}
+        <h3>Results for "{{ query }}":</h3>
+    {% else %}
+        <h3>All Products:</h3>
+    {% endif %}
+    {% for product in results %}
+    <div class="product-card">
+        <div class="product-name">{{ product.name }}</div>
+<div class="product-price">₹{{ product.price }}</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

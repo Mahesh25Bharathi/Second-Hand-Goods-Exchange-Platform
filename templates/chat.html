@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Chat{% endblock %}
+
+{% block content %}
+<h1>Buyer-Seller Chat</h1>
+<div id="messages">
+    {% for msg in messages %}
+    <div class="message">
+        <strong>From {{ msg.from }} to {{ msg.to }}:</strong> {{ msg.msg }}
+    </div>
+    {% endfor %}
+</div>
+<form method="POST">
+    <div>
+        <label>From:</label>
+        <input type="text" name="from_user" value="{{ user_name }}" readonly>
+    </div>
+    <div>
+        <label>To:</label>
+        <input type="text" name="to_user" placeholder="Enter recipient name" required>
+    </div>
+    <div>
+        <label>Message:</label>
+        <textarea name="message" placeholder="Type your message..." required rows="4"></textarea>
+    </div>
+    <button type="submit">Send</button>
+</form>
+{% endblock %}
